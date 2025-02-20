@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="es-CO">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <title>Bduran</title>
+    <meta name="keywords" content="Software, tecnologia, inovacion"/>
+    <meta name="description" content="Tecnologia a tu alcance"/>
+    <meta name="onwer" content="warsoft"/>
+    <meta name="author" content="brayam duran"/>
+    <meta name="robots" content="index, follow"/>
+
+    <script src="js/modernizr-custom.js"></script>
+
+    <!-- Rutas de estilos corregidas -->
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/icomoon.css" />
+    <link rel="stylesheet" href="css/Chakra_Petch.css" />
+    <link rel="stylesheet" href="css/Inter.css" />
+    <link rel="stylesheet" href="css/desing.css" />
+  </head>
+  <body>
+    <header>
+      <h1>
+        <a href="index.html">
+          <figure>
+            <img src="img/Icon.png" alt="Ícono del sitio" />
+          </figure>
+        </a>
+        <a href="index.html">Developer Web</a>
+      </h1>
+
+      <nav id="ioMenu">
+        <figure id="hideMenu" class="ioMenuMovil" onClick="displayMenu()">
+          <img src="img/menu.png" alt="Abrir menú" />
+        </figure>
+
+        <div id="card_menu">
+          <figure id="showMenu" class="ioMenuMovil" onClick="displayMenu()">
+            <img src="img/exit.png" alt="Cerrar menú" />
+          </figure>
+
+          <figure id="logo_menu">
+            <img src="img/logo.png" alt="Logotipo del sitio" />
+          </figure>
+
+          <ul>
+            <li><a onclick="navSection('home')" href="#">Home</a></li>
+            <li><a onclick="navSection('about')" href="#">Sobre mí</a></li>
+            <li><a onclick="navSection('skills')" href="#">Skills</a></li>
+            <li>
+              <a onclick="navSection('portafolio')" href="#">Portafolio</a>
+            </li>
+            <li><a onclick="navSection('blog')" href="#">Blog</a></li>
+            <li><a onclick="diplayFormContact('block')" href="#">Contacto</a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <div id="prev_section" onclick="displaySection('prev')">
+        <img src="iconos/icon-08.png" alt="Icono anterior" />
+      </div>
+
+      <div id="next_section" onclick="displaySection('next')">
+        <img src="iconos/icon-08.png" alt="Icono siguiente" />
+      </div>
+    </header>
+
+    <div id="slider">
+      <section class="slider" id="home" style="display: block">
+
+        <div class="mainanimation">
+          <div id="particles-js">
+        </div>
+
+        <div class="mainlogo">
+
+              <h2>Soy un<strong>developer web</strong></h2>
+              <figure><img src="img/logo.png" alt=""></figure>
+        </div>
+
+        <div class="buttonspage">
+          <div id="contratame" onclick="diplayFormContact('block')">Contratame</div>
+          <a href="docs/file.txt" target="_blank">Descagar CV</a>
+        </div>
+
+      </section>
+
+
+      <section class="slider" id="aboutme" style="display: none"></section>
+      <section class="slider" id="skills" style="display: none"></section>
+      <section class="slider" id="portafolio" style="display: none"></section>
+      <section class="slider" id="blog" style="display: none"></section>
+    </div>
+
+    <div id="contact_form">
+      <form action="contact.php" id="form1" name="form1" method="post">
+        
+        <div id="close_form" onclick="diplayFormContact('none')"></div>
+        <figure id="logo_mensaje"><img src="iconos/icon-17.jpeg" alt="imagen carta"></figure>
+        <p>Di hola!</p>
+
+        <input type="text" id="name" name="name" placeholder="Tu Nombre" 
+        onfocus="if(this.planceholder='') this.planceholder='Tu nombre'"/> 
+
+        <input type="text" id="email" name="email" placeholder="Tu email" 
+        onfocus="if(this.planceholder='') this.planceholder='Tu email'"/> 
+
+        <textarea name="message" id="message" placeholder="Tu mensaje" 
+        onfocus="if(this.planceholder='') this.planceholder='Mensaje'"></textarea>
+
+        <input type="submit" name="submit" id="button" value="ENVIAR"/>
+      </form>
+    </div>
+
+    <div id="contact_button" onclick="diplayFormContact('block')"></div>
+
+    <footer>
+
+      <div class="rrss">
+        <a href="#"></a>
+        <a href="#"></a>
+        <a href="#"></a>
+        <a href="#"></a>
+      </div>
+
+      <p>COPYRIGHT © 2025 all rights reserved warsoft</p>
+
+    </footer>
+
+    <script src="js/particles.js"></script>
+    <script src="js/app.js"></script>
+
+    <script>
+
+      var sections = new Array(5);
+      sections[0] = "home";
+      sections[1] = "about";
+      sections[2] = "skills";
+      sections[3] = "portfolio";
+      sections[4] = "blog";
+      alertSize();
+
+      function alertSize() {
+        var myWidth = 0,
+          myHeight = 0;
+        if (typeof window.innerWidth == "number") {
+          // No-IE
+          myWidth = window.innerWidth;
+          myHeight = window.innerHeight;
+        } else if (
+          document.documentElement &&
+          (document.documentElement.clientWidth ||
+            document.documentElement.clientHeight)
+        ) {
+          // IE 6+
+          myWidth = document.documentElement.clientWidth;
+          myHeight = document.documentElement.clientHeight;
+        } else if (
+          document.body &&
+          (document.body.clientWidth || document.body.clientHeight)
+        ) {
+          // IE 4 compatible
+          myWidth = document.body.clientWidth;
+          myHeight = document.body.clientHeight;
+        }
+
+        var display;
+        var card_menu = document.getElementById("card_menu");
+        display = card_menu.style.display;
+        if (myWidth < 767) {
+          card_menu.style.display = "none";
+        } else {
+          card_menu.style.display = "block";
+        }
+      }
+
+      function displayMenu() {
+        var display;
+        var menu = document.getElementById("card_menu");
+        display = card_menu.style.display;
+
+        if (display == "none") {
+          card_menu.style.display = "block";
+        } else {
+          card_menu.style.display = "none";
+        }
+      }
+
+      function setColors(i) {
+    var search = document.getElementById(sections[i]);
+    var bkgr_body;
+    var bkgr_menu;
+
+    if (sections[i] == "home") {
+        bkgr_body = "#233D58";
+        bkgr_menu = "#233D58";
+    } else {
+        bkgr_body = "#f1f1f1";
+        bkgr_menu = "#29abe2";
+    }
+
+    if (search) {
+        search.style.background = bkgr_body;
+    }
+
+    var menu = document.getElementsByTagName("div")[0];
+    if (menu) {
+        menu.style.background = bkgr_menu;
+    }
+}
+
+function navSection(nav) {
+    for (var i = 0; i < 5; i++) {
+        var search = document.getElementById(sections[i]);
+        if (search) {
+            search.style.display = "none"; // Ocultar todas las secciones
+        }
+
+        if (sections[i] == nav) {
+            search.style.display = "block"; // Mostrar la sección seleccionada
+            setColors(i);
+        }
+    }
+}
+
+function navigate(nav) {
+    var currentIndex = -1;
+
+    for (var i = 0; i < 5; i++) {
+        var search = document.getElementById(sections[i]);
+        if (search && search.style.display === "block") {
+            search.style.display = "none"; // Ocultar la sección actual
+            currentIndex = i;
+            break;
+        }
+    }
+
+    if (currentIndex !== -1) {
+        if (nav == "next") {
+            currentIndex = (currentIndex + 1) % 5; // Avanzar a la siguiente sección
+        } else if (nav == "prev") {
+            currentIndex = (currentIndex - 1 + 5) % 5; // Retroceder a la sección anterior
+        }
+
+        var newSection = document.getElementById(sections[currentIndex]);
+        if (newSection) {
+            newSection.style.display = "block";
+            setColors(currentIndex);
+        }
+    }
+}
+      
+function diplayFormContact(status){
+
+  var form = document.getElementById("contact_form");
+  form.style.display = status;
+}
+</script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RQHERS858T"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RQHERS858T');
+</script>
+
+
+  </body>
+</html>
